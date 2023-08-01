@@ -24,7 +24,7 @@ client = GatumAPI(base_url='https://api.gatum.io', token='your_token')
 # .send_sms() returns a requests library object with server response data
 response = client.send_sms(phone='380957225759',  # required, destination phone number in MSISDN format
                            sender_id='Verify',  # required, numeric SID length must be 3-15 symbols, 
-                           # alphanumeric SID length must be <= 11 symbols
+                                                # alphanumeric SID length must be <= 11 symbols
                            text='Your OTP is 4542',  # required
                            sms_type='sms',  # optional, allowed types: 'sms', 'hlr', 'mnp', by default: 'sms'
                            lifetime='86400',  # optional, how many seconds this SMS will live, by default: '86400'
