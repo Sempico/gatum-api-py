@@ -8,7 +8,7 @@ Requires Python 3.10 or later.
 
 To use the library, first install it from PyPI using `pip`:
 
-    pip install gatum-api
+    pip install gatum-api-py
 
 
 ## Usage for Gatum GET API
@@ -16,7 +16,7 @@ Once you have installed the library, get an API token from Gatum WEB application
 ### Send SMS
 
 ```py
-from gatum_api import GatumAPI
+from gatum_api_py import GatumAPI
 
 # base_url parameter must be set according to your vendor:
 client = GatumAPI(base_url='https://api.gatum.io', token='your_token')
