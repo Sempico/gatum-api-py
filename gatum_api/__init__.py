@@ -1,2 +1,0 @@
-from .GatumAPI import GatumAPI
-
