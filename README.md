@@ -43,27 +43,34 @@ To confirm that you received the DLR, you need to return the value of the `id_st
 An example of a simple listener written using the Python Flask framework:
 ```py
 from flask import Flask, request
+from urllib.parse import urlparse, parse_qs, unquote
 
 app = Flask(__name__)
 
 
 @app.route('/apidlr', methods=['GET'])
 def receive_dlr():
-    id_state = request.args.get('id_state')
-    state = request.args.get('state')
-    dlr_time = request.args.get('time')
-    
-    print(f'SMS ID = {id_state}, DLR status = {state}, DLR time = {dlr_time}')
+    url = request.url
+    parsed_url = urlparse(url)
+    query_string = unquote(parsed_url.query)
+    query_params = parse_qs(query_string) if parsed_url.query else {}
 
-    return id_state, 200
+    params = {}
+    for key, values in query_params.items():
+        params[key] = values[0] if len(values) == 1 else values
+
+    print(params)
+
+    return params['id_state'], 200
 
 
 if __name__ == "__main__":
-    app.run(debug=False, port=5000)
+    app.run(debug=False, port=3000)
+
 ```
 The output: 
 ```
-SMS ID = 598801503, DLR status = DELIVRD, DLR time = 2023-07-23 21:41:20
+{'id_state': '672887248', 'state': 'DELIVRD', 'time': '2023-11-28 13:23:13'}
 ```
 
 
