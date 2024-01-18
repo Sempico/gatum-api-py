@@ -38,7 +38,7 @@ print(response.json())
 ```
 ### Receive DLR 
 To receive DLR, you need to go to the `API` > `GET` section in your WEB cabinet and in the `DLR sending to webhook` field, specify the webhook URL where Gatum should send them.<br><br>
-For example, you specified the URL of your webhook as `https://yourdomain.com/apidlr`, in this case, to send DLR Gatum will make a GET request to the URL `https://yourdomain.com/apidlr?id_state=598801503&state=DELIVRD&time=2023-07-23+21%3A41%3A20` <br>
+For example, you specified the URL of your webhook as `https://yourdomain.com/apidlr`, in this case, to send DLR Gatum will make a GET request to the URL `https://yourdomain.com/apidlr?id_state%3D706152416%26state%3DDELIVRD%26time%3D2024-01-18%2010%3A18%3A07` <br>
 To confirm that you received the DLR, you need to return the value of the `id_state` parameter in response to this request. <br><br>
 An example of a simple listener written using the Python Flask framework:
 ```py
