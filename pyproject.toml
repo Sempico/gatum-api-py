@@ -1,0 +1,70 @@
+[build-system]
+requires = ["hatchling>=1.25"]
+build-backend = "hatchling.build"
+
+[project]
+name = "sempico-api"
+dynamic = ["version"]
+description = "Official Python client for the Sempico Solutions SMS API: SMS, HLR, MNP and delivery reports. Sync and async, typed, with Django, FastAPI and Flask integrations."
+readme = "README.md"
+license = "MIT"
+license-files = ["LICENSE"]
+requires-python = ">=3.10"
+authors = [{ name = "Sempico Solutions Group LTD", email = "support@sempico.solutions" }]
+keywords = ["sms", "sms-api", "sms-gateway", "otp", "hlr", "mnp", "dlr", "sempico", "a2p"]
+classifiers = [
+    "Development Status :: 5 - Production/Stable",
+    "Intended Audience :: Developers",
+    "Operating System :: OS Independent",
+    "Programming Language :: Python :: 3",
+    "Programming Language :: Python :: 3 :: Only",
+    "Programming Language :: Python :: 3.10",
+    "Programming Language :: Python :: 3.11",
+    "Programming Language :: Python :: 3.12",
+    "Programming Language :: Python :: 3.13",
+    "Programming Language :: Python :: 3.14",
+    "Framework :: AsyncIO",
+    "Framework :: Django",
+    "Framework :: FastAPI",
+    "Framework :: Flask",
+    "Topic :: Communications :: Telephony",
+    "Typing :: Typed",
+]
+dependencies = ["httpx>=0.27,<1"]
+
+[project.optional-dependencies]
+django = ["django>=4.2"]
+fastapi = ["fastapi>=0.110"]
+flask = ["flask>=3.0"]
+dev = ["pytest>=8", "pytest-asyncio>=0.24", "ruff>=0.6", "mypy>=1.11"]
+
+[project.urls]
+Homepage = "https://sempico.solutions"
+Documentation = "https://api.sempico.solutions/desc/"
+Repository = "https://github.com/Sempico/gatum-api-py"
+Issues = "https://github.com/Sempico/gatum-api-py/issues"
+Changelog = "https://github.com/Sempico/gatum-api-py/blob/main/CHANGELOG.md"
+
+[tool.hatch.version]
+path = "src/sempico_api/__init__.py"
+
+[tool.hatch.build.targets.wheel]
+packages = ["src/sempico_api", "src/gatum_api_py"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+asyncio_mode = "auto"
+asyncio_default_fixture_loop_scope = "function"
+
+[tool.ruff]
+line-length = 100
+target-version = "py310"
+
+[tool.ruff.lint]
+select = ["E", "F", "I", "UP", "B", "SIM"]
+ignore = ["A002"]
+
+[tool.mypy]
+strict = true
+files = ["src/sempico_api"]
+exclude = ["src/sempico_api/contrib/"]
