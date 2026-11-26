@@ -268,7 +268,9 @@ Runnable versions are in [`examples/`](examples/).
 
 ## Migrating from `gatum-api-py` 1.x
 
-The `gatum-api-py` package and the `GatumAPI` class are now **`sempico-api`** and **`SempicoClient`**. Old imports still work but raise a `DeprecationWarning`.
+The `gatum-api-py` package and the `GatumAPI` class are now **`sempico-api`** and **`SempicoClient`**.
+
+`gatum-api-py` **1.1.0** is a compatibility release. It keeps 1.0.x code working unchanged, shows a `FutureWarning` about the rename, and installs `sempico-api` as a dependency. Its source is in [`legacy/gatum-api-py`](legacy/gatum-api-py/).
 
 | 1.x | 2.x |
 |---|---|

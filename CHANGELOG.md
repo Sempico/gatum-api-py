@@ -27,4 +27,14 @@ The package is renamed from `gatum-api-py` to **`sempico-api`**. Branding is now
 - The `requests` dependency.
 
 ### Deprecated
-- `gatum_api_py.GatumAPI` still works with the 1.x signature and returns the raw response. It will be removed in 3.0.
+- `gatum_api_py` is no longer part of `sempico-api`. It ships only in `gatum-api-py` 1.1.0, so the two packages never write the same files.
+
+## gatum-api-py 1.1.0 (unreleased)
+
+A compatibility release of the old package. Source: `legacy/gatum-api-py`.
+
+- `GatumAPI` keeps the 1.0.x signature, returns a `requests.Response` and raises `requests.HTTPError`.
+- A `FutureWarning` about the rename to `sempico-api` is shown on import.
+- `sempico-api>=2,<3` is now a dependency.
+- Fixed: requests have a 30 s timeout, `delivery=True/False` is sent as `TRUE`/`FALSE`, and the `Accept` header is valid.
+- Fixed: the token no longer appears in `repr()`.
