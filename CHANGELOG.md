@@ -1,6 +1,6 @@
 # Changelog
 
-## 2.0.0 (unreleased)
+## 2.0.0 (2026-11-26)
 
 The package is renamed from `gatum-api-py` to **`sempico-api`**. Branding is now **Sempico Solutions**.
 
@@ -29,7 +29,7 @@ The package is renamed from `gatum-api-py` to **`sempico-api`**. Branding is now
 ### Deprecated
 - `gatum_api_py` is no longer part of `sempico-api`. It ships only in `gatum-api-py` 1.1.0, so the two packages never write the same files.
 
-## gatum-api-py 1.1.0 (unreleased)
+## gatum-api-py 1.1.0 (2026-11-26)
 
 A compatibility release of the old package. Source: `legacy/gatum-api-py`.
 
