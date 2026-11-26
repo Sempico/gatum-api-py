@@ -1,7 +1,10 @@
 """Django wiring, split by file. Copy the parts into your project.
 
 # settings.py
-SEMPICO = {"TOKEN": os.environ["SEMPICO_API_TOKEN"], "DLR_API_KEY": os.environ.get("SEMPICO_DLR_API_KEY")}
+SEMPICO = {
+    "TOKEN": os.environ["SEMPICO_API_TOKEN"],
+    "DLR_API_KEY": os.environ.get("SEMPICO_DLR_API_KEY"),
+}
 
 # urls.py
 from django.urls import path

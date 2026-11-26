@@ -67,7 +67,8 @@ class Sempico:
 
         def decorator(func: Callable[[DeliveryReport], Any]) -> Callable[[DeliveryReport], Any]:
             def view() -> tuple[str, int]:
-                if not verify_api_key(request.headers, current_app.config.get("SEMPICO_DLR_API_KEY")):
+                expected = current_app.config.get("SEMPICO_DLR_API_KEY")
+                if not verify_api_key(request.headers, expected):
                     abort(403)
                 try:
                     report = DeliveryReport.from_query(request.args)
