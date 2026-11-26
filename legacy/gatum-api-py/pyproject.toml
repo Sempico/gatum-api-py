@@ -1,0 +1,35 @@
+[build-system]
+requires = ["hatchling>=1.25"]
+build-backend = "hatchling.build"
+
+[project]
+name = "gatum-api-py"
+dynamic = ["version"]
+description = "Deprecated: renamed to sempico-api. Compatibility release for the Sempico Solutions SMS API."
+readme = "README.md"
+license = "MIT"
+requires-python = ">=3.10"
+authors = [{ name = "Sempico Solutions Group LTD", email = "support@sempico.solutions" }]
+classifiers = [
+    "Development Status :: 7 - Inactive",
+    "Intended Audience :: Developers",
+    "Operating System :: OS Independent",
+    "Programming Language :: Python :: 3",
+    "Programming Language :: Python :: 3 :: Only",
+]
+dependencies = [
+    "requests>=2.28",
+    "sempico-api>=2.0,<3",
+]
+
+[project.urls]
+Homepage = "https://sempico.solutions"
+Documentation = "https://api.sempico.solutions/desc/"
+Repository = "https://github.com/Sempico/gatum-api-py"
+"New package" = "https://pypi.org/project/sempico-api/"
+
+[tool.hatch.version]
+path = "src/gatum_api_py/__init__.py"
+
+[tool.hatch.build.targets.wheel]
+packages = ["src/gatum_api_py"]

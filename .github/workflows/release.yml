@@ -1,5 +1,7 @@
 name: Release
 
+# Tag v2.0.0           -> publishes sempico-api (repository root)
+# Tag gatum-api-py-v1.1.0 -> publishes the legacy gatum-api-py package
 on:
   release:
     types: [published]
@@ -15,5 +17,15 @@ jobs:
       - uses: actions/setup-python@v5
         with:
           python-version: "3.12"
-      - run: pip install build && python -m build
+      - name: Select package
+        id: pkg
+        run: |
+          case "$TAG" in
+            gatum-api-py-v*) echo "dir=legacy/gatum-api-py" >> "$GITHUB_OUTPUT" ;;
+            v*)              echo "dir=." >> "$GITHUB_OUTPUT" ;;
+            *) echo "Unknown tag $TAG"; exit 1 ;;
+          esac
+        env:
+          TAG: ${{ github.event.release.tag_name }}
+      - run: pip install build && python -m build --outdir dist "${{ steps.pkg.outputs.dir }}"
       - uses: pypa/gh-action-pypi-publish@release/v1

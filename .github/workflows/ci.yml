@@ -18,6 +18,8 @@ jobs:
         with:
           python-version: ${{ matrix.python-version }}
       - run: pip install -e ".[dev,django,fastapi,flask]"
+      # sempico-api comes from the checkout above, not from PyPI
+      - run: pip install requests && pip install --no-deps -e legacy/gatum-api-py
       - run: ruff check .
       - run: mypy
       - run: pytest -q
