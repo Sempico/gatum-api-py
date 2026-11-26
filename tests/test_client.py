@@ -31,7 +31,9 @@ def make_client(handler, cls=SempicoClient):
 
 
 def json_response(status: int, body) -> httpx.Response:
-    return httpx.Response(status, content=json.dumps(body), headers={"content-type": "application/json"})
+    return httpx.Response(
+        status, content=json.dumps(body), headers={"content-type": "application/json"}
+    )
 
 
 def test_send_sms_single_part_and_params():
@@ -120,7 +122,8 @@ def test_replacement():
             },
         }
     }
-    r = make_client(lambda req: json_response(200, body)).check_replacement("12345678910", "SMS", "Hi")
+    client = make_client(lambda req: json_response(200, body))
+    r = client.check_replacement("12345678910", "SMS", "Hi")
     assert r.status is True and r.content == "Hello everybody!" and r.parts == 1 and r.mcc == "310"
 
 
